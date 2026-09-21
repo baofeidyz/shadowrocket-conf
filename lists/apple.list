@@ -1,0 +1,14 @@
+# Apple、iCloud 与 Apple Intelligence 服务规则
+IP-CIDR,17.0.0.0/8,no-resolve
+IP-CIDR,2620:149::/32,no-resolve
+IP-CIDR,2403:300::/32,no-resolve
+IP-CIDR,2A01:B740::/32,no-resolve
+DOMAIN-SUFFIX,apple-relay.akamaized.net
+DOMAIN-SUFFIX,apple-relay.apple.com
+DOMAIN-SUFFIX,apple-relay.cloudflare.com
+DOMAIN-SUFFIX,apple-relay.fastly-edge.com
+DOMAIN-SUFFIX,apple-relay.mask.apple-dns.net
+DOMAIN-SUFFIX,hicloud.com
+DOMAIN-SUFFIX,ithome.com
+DOMAIN-SUFFIX,chrome.com
+DOMAIN-SUFFIX,name.com

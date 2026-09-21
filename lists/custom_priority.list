@@ -1,0 +1,9 @@
+# 原始配置中的高优先级自定义例外规则
+DOMAIN,copilot.bing.com
+DOMAIN,cdn.angruo.com
+DOMAIN-SUFFIX,battle.net
+DOMAIN-SUFFIX,blizzard.com
+DOMAIN-SUFFIX,getpricetag.com
+DOMAIN-SUFFIX,m-team.cc
+DOMAIN-SUFFIX,sciencemag.org
+DOMAIN-SUFFIX,teamviewer.com

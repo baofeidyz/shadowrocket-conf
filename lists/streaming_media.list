@@ -1,0 +1,14 @@
+# 流媒体及内容服务规则
+DOMAIN-SUFFIX,bloomberg.com
+DOMAIN-SUFFIX,flickr.com
+DOMAIN-SUFFIX,imgur.com
+DOMAIN-SUFFIX,nytimes.com
+DOMAIN-SUFFIX,staticflickr.com
+DOMAIN-SUFFIX,twitch.tv
+DOMAIN-SUFFIX,wsj.com
+DOMAIN-SUFFIX,wsj.net
+DOMAIN-SUFFIX,vimeo.com
+DOMAIN-SUFFIX,medium.com
+DOMAIN-SUFFIX,nflxvideo.net
+DOMAIN-SUFFIX,soundcloud.com
+DOMAIN-SUFFIX,sndcdn.com
