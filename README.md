@@ -32,6 +32,7 @@ https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/co
 | 顺序 | 规则 | 仓库路径 | Raw 完整路径 |
 | ---: | --- | --- | --- |
 | 00 | 自定义优先规则 | [`lists/custom_priority.list`](lists/custom_priority.list) | <https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/lists/custom_priority.list> |
+| 01 | Siri AI / Apple Intelligence | [`lists/siri_ai.list`](lists/siri_ai.list) | <https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/lists/siri_ai.list> |
 | 01 | Apple / iCloud / Apple Intelligence | [`lists/apple.list`](lists/apple.list) | <https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/lists/apple.list> |
 | 02 | 中国大陆及常用直连域名 | [`lists/china_direct.list`](lists/china_direct.list) | <https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/lists/china_direct.list> |
 | 03 | Google 生态 | [`lists/google.list`](lists/google.list) | <https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/lists/google.list> |
@@ -40,10 +41,19 @@ https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/co
 | 06 | 开发、云服务及基础设施 | [`lists/developer_cloud.list`](lists/developer_cloud.list) | <https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/lists/developer_cloud.list> |
 | 07 | OpenAI / ChatGPT | [`lists/openai_chatgpt.list`](lists/openai_chatgpt.list) | <https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/lists/openai_chatgpt.list> |
 | 08 | Telegram | [`lists/telegram.list`](lists/telegram.list) | <https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/lists/telegram.list> |
-| 09 | LINE 与 Clubhouse | [`lists/line_clubhouse.list`](lists/line_clubhouse.list) | <https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/lists/line_clubhouse.list> |
+| 08 | WhatsApp | [`lists/whatsapp.list`](lists/whatsapp.list) | <https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/lists/whatsapp.list> |
+| 08 | Signal | [`lists/signal.list`](lists/signal.list) | <https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/lists/signal.list> |
+| 08 | LINE | [`lists/line.list`](lists/line.list) | <https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/lists/line.list> |
+| 08 | Facebook Messenger | [`lists/messenger.list`](lists/messenger.list) | <https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/lists/messenger.list> |
+| 08 | Discord | [`lists/discord.list`](lists/discord.list) | <https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/lists/discord.list> |
+| 08 | KakaoTalk | [`lists/kakaotalk.list`](lists/kakaotalk.list) | <https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/lists/kakaotalk.list> |
+| 08 | Viber | [`lists/viber.list`](lists/viber.list) | <https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/lists/viber.list> |
+| 08 | Clubhouse | [`lists/clubhouse.list`](lists/clubhouse.list) | <https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/lists/clubhouse.list> |
 | 10 | DNS 泄漏及隐私检测 | [`lists/dns_privacy.list`](lists/dns_privacy.list) | <https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/lists/dns_privacy.list> |
 | 11 | 局域网及中国大陆 | [`lists/lan_china_final.list`](lists/lan_china_final.list) | <https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/lists/lan_china_final.list> |
 | 12 | 其他代理规则 | [`lists/misc_proxy.list`](lists/misc_proxy.list) | <https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/lists/misc_proxy.list> |
+
+即时通信规则按软件独立维护，每个软件对应一个 list 和一个可单独选择线路的代理组；默认代理组仍可通过“即时通信”统一调整。微信、QQ 等中国大陆服务继续由中国大陆直连规则处理，iMessage 和 FaceTime 归入 Apple 服务。
 ## 银行规则
 
 银行域名规则按机构拆分，主配置统一按 `DIRECT` 策略加载。域名明细主要参考 [v2fly/domain-list-community](https://github.com/v2fly/domain-list-community) 的中国银行分类，并补充常见全国性银行官网。
