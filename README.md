@@ -33,6 +33,7 @@ https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/co
 | ---: | --- | --- | --- |
 | 00 | 自定义优先规则 | [`lists/custom_priority.list`](lists/custom_priority.list) | <https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/lists/custom_priority.list> |
 | 01 | Siri AI / Apple Intelligence | [`lists/siri_ai.list`](lists/siri_ai.list) | <https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/lists/siri_ai.list> |
+| 01 | HomeKit / 家庭 App 直连白名单 | [`lists/homekit.list`](lists/homekit.list) | <https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/lists/homekit.list> |
 | 01 | Apple / iCloud / Apple Intelligence | [`lists/apple.list`](lists/apple.list) | <https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/lists/apple.list> |
 | 02 | 中国大陆及常用直连域名 | [`lists/china_direct.list`](lists/china_direct.list) | <https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/lists/china_direct.list> |
 | 03 | Google 生态 | [`lists/google.list`](lists/google.list) | <https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/lists/google.list> |

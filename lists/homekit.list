@@ -1,0 +1,4 @@
+# HomeKit / 家庭 App 云端依赖直连白名单
+# 本地 HomeKit / Bonjour 的 .local 流量由 General.skip-proxy 处理。
+DOMAIN-SUFFIX,apple-cloudkit.com
+DOMAIN-SUFFIX,push.apple.com
