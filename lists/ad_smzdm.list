@@ -1,0 +1,5 @@
+# 什么值得买：广告投放与统计域名
+# 页面内混排广告依赖响应过滤模块，此处不拦截主业务 API。
+DOMAIN,api.zuihuimai.com
+DOMAIN,analytics-api.smzdm.com
+DOMAIN,adx-api.zdmimg.com

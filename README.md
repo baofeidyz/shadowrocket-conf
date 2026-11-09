@@ -27,7 +27,47 @@ https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/co
 
 ### 分组规则
 
-主配置按编号顺序加载规则文件；自定义优先规则在最前，局域网和中国大陆规则靠后，最终兜底规则由主配置提供。
+主配置按编号顺序加载规则文件；广告拦截位于最前，自定义优先分流紧随其后，局域网和中国大陆规则靠后，最终兜底规则由主配置提供。
+
+### 广告拦截
+
+主配置在中国大陆直连规则之前加载以下专属广告域名列表，并使用 `REJECT`。这些规则无需安装 HTTPS 解密证书，也不依赖其他 Shadowrocket 模块。
+
+| App | 规则文件 | 当前覆盖 | 限制 |
+| --- | --- | --- | --- |
+| 哔哩哔哩 | [`lists/ad_bilibili.list`](lists/ad_bilibili.list) | 广告、游戏推广及广告追踪域名 | 信息流、开屏和 Protobuf 广告需模块响应过滤 |
+| 什么值得买 | [`lists/ad_smzdm.list`](lists/ad_smzdm.list) | 广告投放及统计域名 | 页面内混排广告需模块响应过滤 |
+| 京东 | [`lists/ad_jd.list`](lists/ad_jd.list) | 广告、推广素材及统计域名 | 首页、订单页等混排广告需模块响应过滤 |
+| 淘宝 | [`lists/ad_taobao.list`](lists/ad_taobao.list) | 阿里妈妈、直通车及广告统计域名 | 开屏和主 API 内广告需模块响应过滤 |
+| 高德地图 | [`lists/ad_amap.list`](lists/ad_amap.list) | 广告、推广素材及广告日志域名 | 搜索、路线和打车页面混排广告需模块响应过滤 |
+| 去哪儿 | [`modules/adblock-travel.sgmodule`](modules/adblock-travel.sgmodule) | 开屏广告接口 | 需启用模块和 HTTPS 解密 |
+| 携程 | [`modules/adblock-travel.sgmodule`](modules/adblock-travel.sgmodule) | 开屏广告接口 | 需启用模块和 HTTPS 解密；异常时单独关闭旅行模块 |
+
+域名规则只拦截独立广告主机，无法删除与正常内容共用 API 返回的广告字段。后者需要 Shadowrocket 模块、HTTPS 解密和响应脚本。
+
+#### 配置增强广告模块
+
+模块分成两份，便于独立回退：
+
+- 常用 App 增强模块：<https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/modules/adblock-apps.sgmodule>
+- 去哪儿/携程旅行模块：<https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/modules/adblock-travel.sgmodule>
+
+配置步骤：
+
+1. 先更新并启用本仓库的主配置，确认上面的域名 `REJECT` 规则已经加载。
+2. 打开 Shadowrocket，进入“配置 → 模块”，点击右上角 `+`，分别粘贴上述 Raw 地址并下载。
+3. 先只启用“广告净化 · 哔哩哔哩/值得买/京东/淘宝/高德”，确认常用功能正常后，再启用“广告净化 · 去哪儿/携程”。不要同时启用覆盖相同 App 的其他去广告模块。
+4. 进入“设置 → HTTPS 解密”，打开 HTTPS 解密并选择“生成新的 CA 证书”，按系统提示安装描述文件。
+5. 安装后进入 iOS“设置 → 通用 → 关于本机 → 证书信任设置”，为刚生成的 Shadowrocket 根证书打开完全信任。
+6. 回到 Shadowrocket，确认两个模块均显示为已启用，然后重新连接；强制退出目标 App 后重新打开。仍显示旧开屏时，先清理 App 缓存，必要时重新登录或重装 App。
+
+验证时应分别检查首页、搜索、详情、下单/预订、订单和登录。若出现空白页、接口报错或功能缺失：
+
+1. 先关闭对应模块并重新连接 Shadowrocket；旅行类问题只关闭“广告净化 · 去哪儿/携程”。
+2. 强制退出 App 后重新打开，确认功能是否恢复。
+3. 若恢复，保持该模块关闭并记录 App 版本和异常页面，避免反复重装证书。
+
+安全说明：HTTPS 解密允许 Shadowrocket 查看命中主机名的加密流量。只安装由自己设备上的 Shadowrocket 生成的证书，不要安装他人提供的证书。常用 App 模块引用 `zirawell/R-Store` 的远程去广告脚本，脚本更新可能改变行为；模块不包含会员、付费功能、画质、皮肤或去水印解锁。
 
 | 顺序 | 规则 | 仓库路径 | Raw 完整路径 |
 | ---: | --- | --- | --- |

@@ -1,0 +1,6 @@
+# 哔哩哔哩：广告、游戏推广与广告追踪域名
+# 仅包含可直接 REJECT 的独立域名；信息流与开屏接口需 HTTPS 解密模块。
+DOMAIN-SUFFIX,cm.ad.bilibili.com
+DOMAIN-SUFFIX,cm.adcommon.bilibili.com
+DOMAIN-SUFFIX,cm.game.bilibili.com
+DOMAIN-SUFFIX,cm.track.biligame.bilibili.com

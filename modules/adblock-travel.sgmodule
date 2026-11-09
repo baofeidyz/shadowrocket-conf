@@ -1,0 +1,17 @@
+#!name=广告净化 · 去哪儿/携程
+#!desc=独立拦截去哪儿和携程开屏广告接口；如影响预订或登录，可单独关闭本模块。
+#!author=baofeidyz
+#!category=去广告
+#!system=ios
+#!date=2026-11-09
+# 旅行类 App 规则独立成模块，便于发生兼容性问题时快速回退。
+
+[URL Rewrite]
+# 去哪儿开屏广告
+^https?:\/\/client\.qunar\.com\/pitcher-proxy\?qrt=p_splashAd - reject
+
+# 携程开屏广告/上报端点；若携程功能异常，优先停用本模块。
+^https?:\/\/ma-adx\.ctrip\.com\/_ma\.gif - reject
+
+[MITM]
+hostname = %APPEND% client.qunar.com, ma-adx.ctrip.com
