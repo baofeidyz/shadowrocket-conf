@@ -62,6 +62,8 @@ amap_taxi = type=http-response,pattern=^https?:\/\/m\d-zb\.amap\.com\/ws\/(?:bos
 
 # 京东、淘宝、什么值得买
 jd_ads = type=http-response,pattern=^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(?:deliverLayer|getTabHomeInfo|myOrderInfo|orderTrackBusiness|personinfoBusiness|start|welcomeHome|readCustomSurfaceList),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Scripts/AntiAd/jd.js
+# 京东新版搜索将 functionId 放在 POST 请求体，URL 只有 /client.action；使用本仓库保守过滤脚本。
+jd_search_ads = type=http-response,pattern=^https?:\/\/api\.m\.jd\.com\/client\.action$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/scripts/jd-search-ad-filter.js
 taobao_splash = type=http-response,pattern=^https?:\/\/(?:guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.(?:cloudvideo\.video\.query|wireless\.home\.splash\.awesome\.get)|poplayer\.template\.alibaba\.com\/\w+\.json),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Scripts/AntiAd/taobao.js
 smzdm_ads = type=http-response,pattern=^https?:\/\/(?:haojia\.m\.smzdm\.com\/detail_modul\/user_related_modul|user-api\.smzdm\.com\/vip|app-api\.smzdm\.com\/util\/(?:loading|update)|haojia-api\.smzdm\.com\/(?:home\/list|ranking_list\/articles)|homepage-api\.smzdm\.com\/v\d\/home|article-api\.smzdm\.com\/publish\/get_bubble|qianbao\.smzdm\.com\/v\d\/app\/home|s-api\.smzdm\.com\/sou\/(?:filter\/tags\/hot_tags|list_v\d)|post\.m\.smzdm\.com\/ajax_app\/ajax_get_footer_list),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Scripts/AntiAd/smzdm.js
 

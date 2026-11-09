@@ -37,7 +37,7 @@ https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/co
 | --- | --- | --- | --- |
 | 哔哩哔哩 | [`lists/ad_bilibili.list`](lists/ad_bilibili.list) | 广告、游戏推广及广告追踪域名 | 信息流、开屏和 Protobuf 广告需模块响应过滤 |
 | 什么值得买 | [`lists/ad_smzdm.list`](lists/ad_smzdm.list) | 广告投放及统计域名 | 页面内混排广告需模块响应过滤 |
-| 京东 | [`lists/ad_jd.list`](lists/ad_jd.list) | 广告、推广素材及统计域名 | 首页、订单页等混排广告需模块响应过滤 |
+| 京东 | [`lists/ad_jd.list`](lists/ad_jd.list) | 广告、推广素材、统计域名及新版 POST 搜索结果广告 | 搜索过滤仅删除带明确广告标记的列表项；规则变化时可能漏拦 |
 | 淘宝 | [`lists/ad_taobao.list`](lists/ad_taobao.list) | 阿里妈妈、直通车及广告统计域名 | 开屏和主 API 内广告需模块响应过滤 |
 | 高德地图 | [`lists/ad_amap.list`](lists/ad_amap.list) | 广告、推广素材及广告日志域名 | 搜索、路线和打车页面混排广告需模块响应过滤 |
 | 去哪儿 | [`modules/adblock-travel.sgmodule`](modules/adblock-travel.sgmodule) | 开屏广告接口 | 需启用模块和 HTTPS 解密 |
@@ -71,6 +71,8 @@ https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/co
 3. 若恢复，保持该模块关闭并记录 App 版本和异常页面，避免反复重装证书。
 
 安全说明：HTTPS 解密允许 Shadowrocket 查看命中主机名的加密流量。只安装由自己设备上的 Shadowrocket 生成的证书，不要安装他人提供的证书。常用 App 模块引用 `zirawell/R-Store` 的远程去广告脚本，脚本更新可能改变行为；模块不包含会员、付费功能、画质、皮肤或去水印解锁。
+
+京东搜索说明：新版京东可能把 `functionId` 放在 POST 请求体中，使 URL 只显示为 `https://api.m.jd.com/client.action`。模块为该精确 URL 加载仓库内的 [`scripts/jd-search-ad-filter.js`](scripts/jd-search-ad-filter.js)，只在数组元素包含 `isAd`、`adFlag`、广告 ID 或明确广告类型等标记时删除该元素；未知结构与非 JSON 响应原样放行。更新模块后需要重新连接 Shadowrocket，并强制退出京东后再测试。
 
 | 顺序 | 规则 | 仓库路径 | Raw 完整路径 |
 | ---: | --- | --- | --- |
