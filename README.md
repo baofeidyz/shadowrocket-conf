@@ -51,7 +51,6 @@ https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/co
 
 - 常用 App 增强模块：<https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/modules/adblock-apps.sgmodule>
 - 去哪儿/携程旅行模块：<https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/modules/adblock-travel.sgmodule>
-- Apple 地图国际版模块：<https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/modules/apple-maps-global.sgmodule>
 
 配置步骤：
 
@@ -83,7 +82,6 @@ https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/co
 | 01 | Apple / iCloud / Apple Intelligence | [`lists/apple.list`](lists/apple.list) | <https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/lists/apple.list> |
 | 02 | 中国大陆及常用直连域名 | [`lists/china_direct.list`](lists/china_direct.list) | <https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/lists/china_direct.list> |
 | 03 | Google 生态 | [`lists/google.list`](lists/google.list) | <https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/lists/google.list> |
-| 03 | Google Maps | [`lists/google_maps.list`](lists/google_maps.list) | <https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/lists/google_maps.list> |
 | 04 | 社交媒体 | [`lists/social_media.list`](lists/social_media.list) | <https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/lists/social_media.list> |
 | 05 | 流媒体及内容服务 | [`lists/streaming_media.list`](lists/streaming_media.list) | <https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/lists/streaming_media.list> |
 | 06 | 开发、云服务及基础设施 | [`lists/developer_cloud.list`](lists/developer_cloud.list) | <https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/lists/developer_cloud.list> |
@@ -102,41 +100,6 @@ https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/co
 | 12 | 其他代理规则 | [`lists/misc_proxy.list`](lists/misc_proxy.list) | <https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/lists/misc_proxy.list> |
 
 即时通信规则按软件独立维护，每个软件对应一个 list 和一个可单独选择线路的代理组；默认代理组仍可通过“即时通信”统一调整。微信、QQ 等中国大陆服务继续由中国大陆直连规则处理，iMessage 和 FaceTime 归入 Apple 服务。
-
-### 国行 iPhone 使用 Google Maps
-
-需要先区分两个目标：
-
-- **Google Maps App**：本配置的 `Google地图` 策略组可以让单独安装的 Google Maps 正常联网。
-- **iOS 自带“地图”App**：不能改成 Google Maps，但可以使用 GitHub 项目 [NSRingo/iRingo](https://github.com/NSRingo/iRingo) 的方案，将中国大陆高德地图配置切换成国际版 Apple Maps。国际版的数据源仍是 Apple 及其合作方，并不是 Google。
-
-#### 使用 Google Maps App
-
-使用方法：
-
-1. 用可下载 Google Maps 的 Apple 账户在 App Store 安装 Google Maps，设备需满足 Google 当前要求的 iOS 版本。
-2. 在 Shadowrocket 中更新本仓库主配置并重新连接。
-3. 打开策略组“Google地图”，选择香港、台湾、日本、新加坡或美国等可正常访问 Google 的节点；不建议选择 `DIRECT`。
-4. 强制退出 Google Maps 后重新打开，分别验证地图加载、地点搜索和路线规划。
-
-当前 iOS 在多数地区不能把第三方地图设为系统默认导航 App；因此 Siri、通讯录地址和部分 `maps.apple.com` 链接仍可能打开 Apple 地图。需要 Google Maps 时，请直接打开 Google Maps，或在分享菜单中选择它。
-
-#### 将系统地图切换为国际版 Apple Maps
-
-本仓库提供基于 `NSRingo/MapKit` 提交 `8f845626ead05dfaf33b999512227d6e85dc7fda` 整理的 [`modules/apple-maps-global.sgmodule`](modules/apple-maps-global.sgmodule)。该上游仓库已经归档，因此这里固定到已研究的提交，避免上游内容静默变化。
-
-1. 在 Shadowrocket 中进入“配置 → 模块”，添加以下地址并启用：
-
-   ```text
-   https://raw.githubusercontent.com/baofeidyz/shadowrocket-conf/refs/heads/main/modules/apple-maps-global.sgmodule
-   ```
-
-2. 按本文前面的“配置增强广告模块”步骤，为 Shadowrocket 生成并完全信任 CA 证书，然后打开当前主配置的“HTTPS 解密”。模块会自动追加 `configuration.ls.apple.com` 和 `gspe35-ssl.ls.apple.com`，不要使用 `*` 做全域名解密。
-3. 重新连接 Shadowrocket，强制退出系统“地图”后再打开。如果仍显示高德标志，重启设备后在 Wi-Fi 与 Shadowrocket 已连接的状态下重新打开地图。
-4. 验证左下角不再显示高德标志，并检查地图加载、地点搜索和路线规划。若出现空白地图或搜索失败，立即关闭该模块并重新连接。
-
-隐私与兼容性说明：该方案会把上述三个**地图配置请求**重写至 `nanocat.cloud`，由其返回国际版配置；它不重写地点搜索、路线规划或实时位置请求。由于服务由第三方维护、上游也注明 Shadowrocket 仅“部分兼容”，本模块保持可选且不随主配置默认启用。iOS 更新可能随时使方案失效。
-
 ## 银行规则
 
 银行域名规则按机构拆分，主配置统一按 `DIRECT` 策略加载。域名明细主要参考 [v2fly/domain-list-community](https://github.com/v2fly/domain-list-community) 的中国银行分类，并补充常见全国性银行官网。
