@@ -1,0 +1,13 @@
+# Google Maps for iOS / Web
+DOMAIN,maps.google.com
+DOMAIN,maps.google.cn
+DOMAIN-SUFFIX,googlemaps.com
+DOMAIN-SUFFIX,maps.googleapis.com
+DOMAIN-SUFFIX,geo.googleapis.com
+DOMAIN-SUFFIX,roads.googleapis.com
+DOMAIN-SUFFIX,streetviewpixels-pa.googleapis.com
+DOMAIN-SUFFIX,maps.gstatic.com
+DOMAIN-SUFFIX,kh.google.com
+DOMAIN-SUFFIX,khm.google.com
+DOMAIN-SUFFIX,ggpht.com
+DOMAIN-SUFFIX,googleusercontent.com

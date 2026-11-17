@@ -1,0 +1,28 @@
+#!name = Apple 地图国际版（iRingo）
+#!desc = 将中国大陆 Apple 地图配置切换为国际版；数据源为 Apple Maps，并非 Google Maps。依赖 HTTPS 解密及 nanocat.cloud 配置转换服务。
+#!author = NSRingo / VirgilClyne
+#!homepage = https://github.com/NSRingo/MapKit/tree/8f845626ead05dfaf33b999512227d6e85dc7fda
+#!icon = https://developer.apple.com/assets/elements/icons/maps/maps-128x128.png
+#!category = 地图
+#!date = 2026-11-17
+
+# 基于 NSRingo/MapKit 提交 8f845626ead05dfaf33b999512227d6e85dc7fda
+# 的 modules/iRingo.Maps.Workers.srmodule 整理。
+
+[Rule]
+# 中国大陆高德及 Apple 地图服务端点保持直连；配置清单由下方重写决定数据源。
+DOMAIN-SUFFIX,is.autonavi.com,DIRECT
+DOMAIN,gspe11-2-cn-ssl.ls.apple.com,DIRECT
+DOMAIN,gspe12-cn-ssl.ls.apple.com,DIRECT
+DOMAIN,gspe19-cn-ssl.ls.apple.com,DIRECT
+DOMAIN,gspe19-2-cn-ssl.ls.apple.com,DIRECT
+DOMAIN,gspe79-cn-ssl.ls.apple.com,DIRECT
+
+[URL Rewrite]
+# 仅改写地图默认配置、公告和资源清单，不改写搜索、路线或用户位置请求。
+^https?:\/\/configuration\.ls\.apple\.com\/config\/defaults https://configuration-ls.nanocat.cloud/config/defaults header
+^https?:\/\/gspe35-ssl\.ls\.apple\.com\/config\/announcements https://gspe35-ssl-ls.nanocat.cloud/config/announcements header
+^https?:\/\/gspe35-ssl\.ls\.apple\.com\/geo_manifest\/dynamic\/config https://gspe35-ssl-ls.nanocat.cloud/geo_manifest/dynamic/config header
+
+[MITM]
+hostname = %APPEND% configuration.ls.apple.com, gspe35-ssl.ls.apple.com
